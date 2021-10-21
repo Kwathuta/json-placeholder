@@ -7,40 +7,39 @@ on:
 jobs:
   #Creating Build Job
   build:
-    - name: Build and test
-      runs-on: ubuntu_latest
+    runs-on: ubuntu_latest
 
-      strategy:
-        matrix:
-          node-version: [14]
+    strategy:
+      matrix:
+        node-version: [14]
 
-      steps:
-        - name: checkout
-          uses: actions/checkout@v1
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
 
-        - name: Install Dependencies
-          run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-        - name: Build
-          run: npm run build:ci
+      - name: Build
+        run: npm run build:ci
 
-        - name: Test
-          run: npm run test:ci
+      - name: Test
+        run: npm run test:ci
 
-          #Upload Artifacts
-        - name: Archive build
-          if: success()
-          uses: actions/upload-artifact@v1
-          with:
-            name: deploy_dist
-            path: dist
+        #Upload Artifacts
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
 
-        - name: Archive code coverage result
-          if: success()
-          uses: actions/upload-artifact@v1
-          with:
-            name: deploy_coverage
-            path: coverage
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_coverage
+          path: coverage
 
   #Creating Deploy Job
   deploy:
