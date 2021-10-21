@@ -7,7 +7,7 @@ name: Deploying to Github Pages
 jobs:
   #Creating Build Job
   build:
-    - name: Build and test
+    name: Build and test
     runs-on: ubuntu_latest
 
     strategy:
