@@ -1,8 +1,8 @@
+name: Deploying to Github Pages
 on:
   push:
     branches:
       - "main"
-name: Deploying to Github Pages
 
 jobs:
   #Creating Build Job
@@ -29,14 +29,12 @@ jobs:
 
       #Upload Artifacts
       -name: Archive build
-      if: success()
       uses: actions/upload-artifact@v1
       with:
         -name: deploy_dist
         path: dist
       
       -name: Archive code coverage result
-      if: success()
       uses: actions/upload-artifact@v1
       with:
         -name: deploy_coverage
