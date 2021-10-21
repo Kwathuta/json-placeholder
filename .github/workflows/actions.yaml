@@ -7,7 +7,7 @@ on:
 jobs:
   #Creating Build Job
   build:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-18.04
 
     strategy:
       matrix:
