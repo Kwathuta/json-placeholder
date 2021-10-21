@@ -43,11 +43,11 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist
-          path: dist/json-placeholder
+          path:
 
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: deploy-dist/
+          FOLDER: deploy-dist/json-placeholder/
